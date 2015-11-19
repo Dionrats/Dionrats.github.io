@@ -1,0 +1,210 @@
+*{
+	margin: 0px;
+}
+
+body{
+	background-color: red;
+}
+
+.logo{
+	width: 100%;
+	transition: all 200ms ease-in-out;
+
+}
+
+.logo:hover{
+	animation-name: logo;
+	animation-duration: 2s;
+	animation-name: tada;
+	width: 200%;
+	z-index: 5;
+}
+
+@keyframes logo{
+	0% {width: 100%;}
+	100% {width: 200%;}
+}
+
+@keyframes tada {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  10%, 20% {
+    -webkit-transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(.9, .9, .9) rotate3d(0, 0, 1, -3deg);
+  }
+
+  30%, 50%, 70%, 90% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+  }
+
+  40%, 60%, 80% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+  }
+
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.logo:active {
+	width: 200%;
+  -webkit-animation-name: tada;
+  
+  animation-duration: 1s;
+}
+
+
+.sidebar{
+	height: 100%;
+	width: 10%;
+	left: 0px;
+	top: 0px;
+	display: inline-block;
+	background-color: black;
+	position: absolute;
+}
+
+.content{
+	width: 90%;
+	height: 100%;
+	margin-left: 10%;
+}
+
+.slider{
+
+}
+
+.btn{
+	color: white;
+	background-color: rgba(0,0,0,0.6);
+	padding: 10px 30px;
+	font-size: 40px;
+	font-weight: 700;
+	position: relative;
+	z-index: 2;
+	transition: all 200ms ease-in-out;
+	cursor: pointer;
+}
+
+.btn:hover{
+	color: red;
+	background-color: black;
+}
+
+.left{
+	top: -270px;
+	left: -1100px;
+}
+
+.right{
+	top: -270px;
+	left: -20px;
+}
+
+.sldr-img{
+	position: relative;
+	left: 10%;
+	width: 80%;
+	height: 60%;
+	margin: 20px auto;
+	translate: all 50ms ease-in-out;
+	z-index: 1;
+}
+
+.groot{
+	font-weight: bold;
+	font-size: 20px;
+	color: purple;
+}
+
+.verhaal b{
+	color: purple;
+}
+
+.verhaal{
+	position: relative;
+	width: 80%;
+	height: 40%;
+	margin: 20px auto;
+	font-family: "Comic Sans MS";
+}
+
+.lead{
+	position: relative;
+	width: 80%;
+	margin: 20px auto;
+
+	font-family: "Comic Sans MS";
+
+}
+
+.menu{
+	color: white;
+	font-family: "Comic Sans MS";
+
+	width: 10%;
+	padding: 0px;
+	padding-top: 30px;
+
+	position: fixed;
+	z-index: 5;
+}
+
+.menu li{
+	padding-bottom: 20px;
+	transition: all 200ms ease-in-out;
+}
+
+
+.menu li:hover{
+	font-size: 20px;
+	color: purple;
+}
+
+.menu li:active{
+	background-color: red;
+	font-size: 25px;
+}
+
+@keyframes rotateInDownLeft {
+  from {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  25% {
+  	-webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+
+  50% {
+  	-webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+
+  75% {
+  	-webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 270deg);
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+
+  to {
+    -webkit-transform-origin: left bottom;
+    transform-origin: left bottom;
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
