@@ -1,1 +1,14 @@
-<h1>hello</h1>
+<script>
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+}
+
+String movie = getURLParameter('mn');
+
+document.getElementById("wow").innerHTML = "Woww, " + movie + " is een kei leuke film";
+
+</script>
+
+<h1 id="wow"></h1>
+
+<!-- ik weet t, het is verschrikkelijk slechte code. Ik wou ff snel iets in elkaar zetten  -->
