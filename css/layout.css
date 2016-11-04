@@ -58,7 +58,7 @@ header .banner {
 
 header .banner-text { width: 100%; }
 header .banner-text h1 {
-   font: 90px/1.1em 'opensans-bold', sans-serif;
+   font: 90px/1.1em 'Courgette', cursive;
    color: #fff;
    letter-spacing: -2px;
    margin: 0 auto 18px auto;
@@ -255,7 +255,7 @@ ul#nav li.current a { color: #F06000; }
    padding-bottom: 6px;
 }
 #resume h3 {
-   font: 25px/30px 'opensans-bold', sans-serif;
+  font-family: 'Courgette', cursive;
 }
 
 #resume .header-col { padding-top: 9px; }
