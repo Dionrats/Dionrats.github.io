@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function startTime() {
+  var today = new Date();
+  var h = friday().getHours() - today.getHours() - 1;
+  var m = 60 - today.getMinutes();
+  var s = 60- today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+
+
+function friday() {
+    var dayOfWeek = 5;//friday
+    var date = new Date(2013, 10, 13, 16);
+    var diff = date.getDay() - dayOfWeek;
+    if (diff > 0) {
+        date.setDate(date.getDate() + 6);
+    }
+    else if (diff < 0) {
+        date.setDate(date.getDate() + ((-1) * diff))
+    }
+    return date
+}
+</script>
+</head>
+
+<body onload="startTime()">
+<div>Het is vrijmibo over: </div>
+<div id="txt"></div>
+
+</body>
+</html>
