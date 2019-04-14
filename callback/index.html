@@ -1,0 +1,85 @@
+<script type="text/javascript" src="https://dionrats.github.io/assets/js/jquery.min.js"></script>
+<script src="https://dionrats.github.io/assets/js/js-cookie.js"></script>
+<script>
+
+    handle();
+    function handle() {
+        //prepare context
+        let context = prepareData();
+        
+        //error handling
+        if(context['error'] != undefined){
+            console.error(context['error']);
+            return;
+        }
+
+        if(context['state'] != "hellomusic")
+            return;
+
+        if(context['code'] == undefined)
+            return;
+
+        console.log(context);
+
+        //optain tokens
+        obtainTokens(context, success => {
+            //prepare context
+            
+
+            //error handling
+            console.log(success);
+
+            //write cookie
+            //writeCookies(success);
+
+             //redirect
+            //window.location.replace('https://vrijmibo.dionrats.nl');
+        });
+    }
+
+    function prepareContext() {
+        let context = [];
+        window.location.href.split("?")[1].split("&").forEach(n => context.push(n.split("=")));
+        let len = context.length;
+        for (let i = 0; i < len; i++) {
+            context[context[0][0]] = context[0][1];
+            context.shift();
+        }
+
+        return context;
+    }
+
+    function obtainTokens(context, callback) {
+        $.ajax({
+            type: "POST",
+            url: "https://accounts.spotify.com/api/token",
+            data: {
+                grant_type: "authorization_code",
+                code: context["code"],
+                redirect_uri: "https://vrijmibo.dionrats.nl/callback"
+            },
+            success: success => callback,
+            dataType: json,
+            headers: {
+                Authorization: "Basic ZDZhNWE5N2YwNzM4NDY0MWFmMDU5OWQzNzJkMDVkNWE6MTQwNzBhOTA4M2YzNGRlZGI5ZjU5MzU5ZTE1ZTg0NjQ="
+            }
+        });
+    }
+
+    function writeCookies(context) {
+
+        let refresh = context["refresh_token"];
+        let access = context["access_token"];
+        let expire = new Date(new Date().getTime() + context["expires_in"] * 1000);;
+
+        Cookies.set('spotifySession', {
+            access_token: access, 
+            refresh_token: refresh
+        }, {
+            expires: expire, 
+            secure: true}
+        );
+    }
+    
+    
+</script>

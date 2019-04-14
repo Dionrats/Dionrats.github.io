@@ -1,117 +1,137 @@
 <!doctype html>
 <html id="html">
-<head>	
+
+<head>
     <meta charset="utf-8">
 
     <link href="https://fonts.googleapis.com/css?family=Raleway|Dancing+Script|Pacifico&effect=anaglyph" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="https://dionrats.github.io/assets/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://dionrats.github.io/assets/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://dionrats.github.io/assets/css/demo.css">
 
-	<title>Vrijmibo!</title>
+    <title>Vrijmibo!</title>
 </head>
 
 <body>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-dark p-4">
+                 <script>
+                    //check sessionCookie
+                        //if oke:
+                            //display playlist options
+                                //todo
+                            //display logout option
+                                //if clicked
+                                    //delete sessionCookie
+                                    //refresh page
+                        //if not-oke:
+                            //display connect option
+                </script>
+                <h5 class="text-white h4">Connect Spotify</h5>
+                <button type="button" class="btn btn-primary" onclick="authenticateSpotify()">Let's Go!</button>
+            </div>
+        </div>
+        <nav class="navbar navbar-dark bg-transparent">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </div>
 
-<div class="countdown countdown-container container">
-    <div class="row title"><span>Het is</span><h1 class="font-effect-anaglyph">VRIJMIBO</h1><span>over:</span></div>
-    <div class="clock row">
-        <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
-            <div class="wrap">
-                <div class="inner">
-                    <div id="canvas-days" class="clock-canvas"></div>
+    <div class="countdown countdown-container container">
+        <div class="row title">
+            <span>Het is</span>
+            <h1 class="font-effect-anaglyph">VRIJMIBO</h1>
+            <span>over:</span>
+        </div>
+        <div class="clock row">
+            <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+                <div class="wrap">
+                    <div class="inner">
+                        <div id="canvas-days" class="clock-canvas"></div>
 
-                    <div class="text">
-                        <p class="val">0</p>
-                        <p class="type-days type-time">DAGEN</p>
-                    </div><!-- /.text -->
-                </div><!-- /.inner -->
-            </div><!-- /.wrap -->
-        </div><!-- /.clock-item -->
+                        <div class="text">
+                            <p class="val">0</p>
+                            <p class="type-days type-time">DAGEN</p>
+                        </div>
+                        <!-- /.text -->
+                    </div>
+                    <!-- /.inner -->
+                </div>
+                <!-- /.wrap -->
+            </div>
+            <!-- /.clock-item -->
 
-        <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
-            <div class="wrap">
-                <div class="inner">
-                    <div id="canvas-hours" class="clock-canvas"></div>
+            <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+                <div class="wrap">
+                    <div class="inner">
+                        <div id="canvas-hours" class="clock-canvas"></div>
 
-                    <div class="text">
-                        <p class="val">0</p>
-                        <p class="type-hours type-time">UREN</p>
-                    </div><!-- /.text -->
-                </div><!-- /.inner -->
-            </div><!-- /.wrap -->
-        </div><!-- /.clock-item -->
+                        <div class="text">
+                            <p class="val">0</p>
+                            <p class="type-hours type-time">UREN</p>
+                        </div>
+                        <!-- /.text -->
+                    </div>
+                    <!-- /.inner -->
+                </div>
+                <!-- /.wrap -->
+            </div>
+            <!-- /.clock-item -->
 
-        <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
-            <div class="wrap">
-                <div class="inner">
-                    <div id="canvas-minutes" class="clock-canvas"></div>
+            <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+                <div class="wrap">
+                    <div class="inner">
+                        <div id="canvas-minutes" class="clock-canvas"></div>
 
-                    <div class="text">
-                        <p class="val">0</p>
-                        <p class="type-minutes type-time">MINUTEN</p>
-                    </div><!-- /.text -->
-                </div><!-- /.inner -->
-            </div><!-- /.wrap -->
-        </div><!-- /.clock-item -->
+                        <div class="text">
+                            <p class="val">0</p>
+                            <p class="type-minutes type-time">MINUTEN</p>
+                        </div>
+                        <!-- /.text -->
+                    </div>
+                    <!-- /.inner -->
+                </div>
+                <!-- /.wrap -->
+            </div>
+            <!-- /.clock-item -->
 
-        <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
-            <div class="wrap">
-                <div class="inner">
-                    <div id="canvas-seconds" class="clock-canvas"></div>
+            <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+                <div class="wrap">
+                    <div class="inner">
+                        <div id="canvas-seconds" class="clock-canvas"></div>
 
-                    <div class="text">
-                        <p class="val">0</p>
-                        <p class="type-seconds type-time">SECONDEN</p>
-                    </div><!-- /.text -->
-                </div><!-- /.inner -->
-            </div><!-- /.wrap -->
-        </div><!-- /.clock-item -->
-    </div><!-- /.clock -->
-</div><!-- /.countdown-wrapper -->
+                        <div class="text">
+                            <p class="val">0</p>
+                            <p class="type-seconds type-time">SECONDEN</p>
+                        </div>
+                        <!-- /.text -->
+                    </div>
+                    <!-- /.inner -->
+                </div>
+                <!-- /.wrap -->
+            </div>
+            <!-- /.clock-item -->
+        </div>
+        <!-- /.clock -->
+    </div>
+    <!-- /.countdown-wrapper -->
 
 
 
-<script type="text/javascript" src="https://dionrats.github.io/assets/js/jquery.min.js"></script>
-<script type="text/javascript" src="https://dionrats.github.io/assets/js/kinetic.js"></script>
-<script type="text/javascript" src="https://dionrats.github.io/assets/js/jquery.final-countdown.min.js"></script>
-<script type="text/javascript">  
-    $('document').ready(function() {
-        'use strict';
-
-        let now = computeUnixTime(new Date());
-    	$('.countdown').final_countdown({
-            'start': now,
-            'end': computeUnixTime(friday()),
-            'now': now      
-        });
-
-        loadBackground();
-    });
-
-    function computeUnixTime(date) {
-        return Math.round(date.getTime()/1000);
-    }
-
-     function friday() {
-        var dayOfWeek = 5;
-        var date = new Date();
-        date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
-        date.setHours(16);
-        date.setMinutes(0);
-        date.setSeconds(0);
-
-        return date;
-    }
-
-    function loadBackground() {
-        let min = 0;
-        let max = 25;
-        let offSet = Math.random() * (max - min) + min;
-        $.get("https://api.giphy.com/v1/gifs/search?api_key=GgBhSVxyJ0mbSMx6CZL9QHraulmyV6jU&q=cheers&limit=1&offset=" + offSet + "&rating=G&lang=nl", function(res) {
-            $("#html").css("background-image", "url(" + res.data[0].images.original.url + ")");
-        });
-    }
-</script>
+    <script type="text/javascript" src="https://dionrats.github.io/assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://dionrats.github.io/assets/js/kinetic.js"></script>
+    <script type="text/javascript" src="https://dionrats.github.io/assets/js/jquery.final-countdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    <script type="text/javascript" src="https://dionrats.github.io/assets/js/app.js"></script>
 
 </body>
+
 </html>
