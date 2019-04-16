@@ -45,7 +45,8 @@
                 code: context["code"],
                 redirect_uri: "https://vrijmibo.dionrats.nl/callback"
             },
-            success: data => {
+            success: function(data){
+                console.log(data);
                 //write cookie
                 writeCookies(data);
 
