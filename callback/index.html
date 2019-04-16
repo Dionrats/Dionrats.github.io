@@ -20,9 +20,9 @@
             return;
 
         //optain tokens
-        obtainTokens(context, success => {
+        obtainTokens(context, function(data){
             //write cookie
-            writeCookies(success);
+            writeCookies(data);
 
              //redirect
             window.location.replace('https://vrijmibo.dionrats.nl');
@@ -51,7 +51,7 @@
                 code: context["code"],
                 redirect_uri: "https://vrijmibo.dionrats.nl/callback"
             },
-            success: callback(data),
+            success: data => callback,
             dataType: "json",
             headers: {
                 "Access-Control-Allow-Headers": "*",
