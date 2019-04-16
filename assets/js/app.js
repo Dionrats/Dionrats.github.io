@@ -33,6 +33,10 @@ function loadBackground() {
     $.get("https://api.giphy.com/v1/gifs/search?api_key=GgBhSVxyJ0mbSMx6CZL9QHraulmyV6jU&q=cheers&limit=1&offset=" + offSet + "&rating=G&lang=nl", function(res) {
         $("#html").css("background-image", "url(" + res.data[0].images.original.url + ")");
     });
+
+    setInterval(function() {
+        loadBackground();
+    }, 3000);
 }
 
 function playMusic() {
