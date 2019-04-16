@@ -36,7 +36,7 @@ function loadBackground() {
 
     setInterval(function() {
         loadBackground();
-    }, 300000);
+    }, 60000);
 }
 
 function playMusic() {
