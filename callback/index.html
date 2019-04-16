@@ -19,21 +19,13 @@
         if(context['code'] == undefined)
             return;
 
-        console.log(context);
-
         //optain tokens
         obtainTokens(context, success => {
-            //prepare context
-            
-
-            //error handling
-            console.log(success);
-
             //write cookie
-            //writeCookies(success);
+            writeCookies(success);
 
              //redirect
-            //window.location.replace('https://vrijmibo.dionrats.nl');
+            window.location.replace('https://vrijmibo.dionrats.nl');
         });
     }
 
@@ -59,9 +51,7 @@
                 code: context["code"],
                 redirect_uri: "https://vrijmibo.dionrats.nl/callback"
             },
-            success: function(data) {
-                console.log(data);
-            },
+            success: data => callback,
             dataType: "json",
             headers: {
                 "Access-Control-Allow-Headers": "*",
@@ -71,14 +61,12 @@
     }
 
     function writeCookies(context) {
-
-        let refresh = context["refresh_token"];
-        let access = context["access_token"];
-        let expire = new Date(new Date().getTime() + context["expires_in"] * 1000);;
+        console.log("writing cookie");
+        let expire = new Date(new Date().getTime() + context.expires_in * 1000);;
 
         Cookies.set('spotifySession', {
-            access_token: access, 
-            refresh_token: refresh
+            access_token: context.access_token, 
+            refresh_token: context.refresh_token
         }, {
             expires: expire, 
             secure: true}
