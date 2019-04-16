@@ -5,7 +5,7 @@
     handle();
     function handle() {
         //prepare context
-        let context = prepareData();
+        let context = prepareContext();
         
         //error handling
         if(context['error'] != undefined){
@@ -50,6 +50,7 @@
     }
 
     function obtainTokens(context, callback) {
+        console.log("Sending request");
         $.ajax({
             type: "POST",
             url: "https://accounts.spotify.com/api/token",
@@ -58,9 +59,12 @@
                 code: context["code"],
                 redirect_uri: "https://vrijmibo.dionrats.nl/callback"
             },
-            success: success => callback,
-            dataType: json,
+            success: function(data) {
+                console.log(data);
+            },
+            dataType: "json",
             headers: {
+                "Access-Control-Allow-Headers": "*",
                 Authorization: "Basic ZDZhNWE5N2YwNzM4NDY0MWFmMDU5OWQzNzJkMDVkNWE6MTQwNzBhOTA4M2YzNGRlZGI5ZjU5MzU5ZTE1ZTg0NjQ="
             }
         });
