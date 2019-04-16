@@ -20,13 +20,7 @@
             return;
 
         //optain tokens
-        obtainTokens(context, function(data){
-            //write cookie
-            writeCookies(data);
-
-             //redirect
-            window.location.replace('https://vrijmibo.dionrats.nl');
-        });
+        obtainTokens(context);
     }
 
     function prepareContext() {
@@ -41,7 +35,7 @@
         return context;
     }
 
-    function obtainTokens(context, callback) {
+    function obtainTokens(context) {
         console.log("Sending request");
         $.ajax({
             type: "POST",
@@ -51,7 +45,13 @@
                 code: context["code"],
                 redirect_uri: "https://vrijmibo.dionrats.nl/callback"
             },
-            success: data => callback,
+            success: data => {
+                //write cookie
+                writeCookies(data);
+
+                //redirect
+                window.location.replace('https://vrijmibo.dionrats.nl');
+            },
             dataType: "json",
             headers: {
                 "Access-Control-Allow-Headers": "*",
