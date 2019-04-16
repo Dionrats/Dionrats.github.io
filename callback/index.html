@@ -51,7 +51,7 @@
                 code: context["code"],
                 redirect_uri: "https://vrijmibo.dionrats.nl/callback"
             },
-            success: data => callback,
+            success: callback(data),
             dataType: "json",
             headers: {
                 "Access-Control-Allow-Headers": "*",
