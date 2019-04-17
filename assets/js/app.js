@@ -1,15 +1,20 @@
 $('document').ready(function() {
     'use strict';
+    initTimer();
+    checkSpotifySession();
+    setInterval(function() {
+        loadBackground();
+    }, 60000);
+});
 
+function initTimer() {
     let now = computeUnixTime(new Date());
     $('.countdown').final_countdown({
         'start': now,
         'end': computeUnixTime(friday()),
         'now': now      
     });
-
-    loadBackground();
-});
+}
 
 function computeUnixTime(date) {
     return Math.round(date.getTime()/1000);
@@ -33,10 +38,34 @@ function loadBackground() {
     $.get("https://api.giphy.com/v1/gifs/search?api_key=GgBhSVxyJ0mbSMx6CZL9QHraulmyV6jU&q=cheers&limit=1&offset=" + offSet + "&rating=G&lang=nl", function(res) {
         $("#html").css("background-image", "url(" + res.data[0].images.original.url + ")");
     });
+}
 
-    setInterval(function() {
-        loadBackground();
-    }, 60000);
+function checkSpotifySession() {
+    //check sessionCookie
+        //if oke:
+            //display playlist options
+                //todo
+            //display logout option
+                //if clicked
+                    //delete sessionCookie
+                    //refresh page
+        //if not-oke:
+            //display connect option
+    
+    //check if a user is logged in
+    if(Cookie.get('spotifySession') == undefined)
+        return; //Show loginbutton
+
+    //get session cookie
+    let spotifySession = Cookie.get('spotifySession');
+
+    //check if accesstoken is valid
+    if(new Date().getTime() >= spotifySession.expires_at)
+        return; //get new access_token
+    
+    
+    
+
 }
 
 function playMusic() {
