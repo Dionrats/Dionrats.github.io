@@ -177,7 +177,7 @@ function isConnected() {
     
     $.ajax({
         type: "GET",
-        crossDomain: true,
+        // crossDomain: true,
         xhrFields: {
             withCredentials: true
         },
