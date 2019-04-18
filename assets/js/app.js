@@ -178,9 +178,6 @@ function isConnected() {
     $.ajax({
         type: "GET",
         // crossDomain: true,
-        xhrFields: {
-            withCredentials: true
-        },
         url: "https://accounts.spotify.com/api/me",
         success: function(data){
             console.log("Got account metadata");
