@@ -196,7 +196,7 @@ function isConnected() {
             console.log("Got account playlists");
             for (let i = 0; i < data.items.length; i++) {
                 const playlist = data.items[i];
-                $('.dropdown-menu').append('<a class="dropdown-item" onclick="selectPlaylist(\'' + data.items[i].tracks.href + '\')">' + data.items[i].name + '</a>');
+                $('.dropdown-menu').append('<a class="dropdown-item" onclick="selectPlaylist(\'' + data.items[i].tracks.href + '\', \'' + data.items[i].name + '\')">' + data.items[i].name + '</a>');
             }
         }
     });
@@ -208,6 +208,7 @@ function isNotConnected() {
     $(".connect").removeClass("hidden");
 }
 
-function selectPlaylist(url) {
-    console.log(url);
+function selectPlaylist(url, name) {
+    $('dropdown-toggle').html(name);
+    Cookies.set('SpotifyPlaylist', url);
 }
