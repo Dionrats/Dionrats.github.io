@@ -55,19 +55,22 @@ function checkSpotifySession() {
                     //refresh page
         //if not-oke:
             //display connect option
-    
-    //check if a user is logged in
-    if(Cookie.get('spotifySession') == undefined)
-        return; //Show loginbutton
 
     //get session cookie
-    let spotifySession = Cookie.get('spotifySession');
+    let spotifySession = Cookies.get('spotifySession');
+    
+    //check if a user is logged in
+    if(spotifySession == undefined)
+        return; //Show loginbutton
 
     //check if accesstoken is valid
-    if(new Date().getTime() >= spotifySession.expires_at)
+    if(new Date().getTime() >= spotifySession.expires_at){
+        console.log("Expired Cookie found");
         return; //get new access_token
+    }
+        
     
-    
+    console.log("Valid Cookie found!")
     
 
 }
