@@ -194,10 +194,9 @@ function isConnected() {
         },
         success: function(data){
             console.log("Got account playlists");
-            console.log(data);
             for (let i = 0; i < data.items.length; i++) {
                 const playlist = data.items[i];
-                $('.dropdown-menu').append('<a class="dropdown-item" onclick="selectPlaylist('/' + data.items[i].tracks.href + '/')">' + data.items[i].name + '</a>');
+                $('.dropdown-menu').append('<a class="dropdown-item" onclick="selectPlaylist(\'' + data.items[i].tracks.href + '\')">' + data.items[i].name + '</a>');
             }
         }
     });
