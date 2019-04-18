@@ -184,7 +184,6 @@ function isConnected() {
             $(".name").html(data.display_name);
         },
         headers: {
-            "Access-Control-Allow-Headers": "*",
             Authorization: "Bearer " + cookie.access_token
         }
     });
