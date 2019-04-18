@@ -63,13 +63,25 @@
 
     function writeCookies(context) {
         console.log("writing cookie");
-        let expire = new Date(new Date().getTime() + context.expires_in * 1000);;
 
+        let cookie = Cookies.get('spotifySession');
+
+        if(cookie != undefined) {
+            
+        }else {
+            setCookie(context);
+        }
+
+        
+    }
+
+    function setCookie(context) {
         Cookies.set('spotifySession', {
             access_token: context.access_token, 
-            refresh_token: context.refresh_token
+            refresh_token: context.refresh_token,
+            expires_at: (new Date().getTime() +  (context.expires_in * 1000))
         }, {
-            expires: expire, 
+            expires: 1, 
             secure: true}
         );
     }
