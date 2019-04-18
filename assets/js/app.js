@@ -1,10 +1,8 @@
 $('document').ready(function() {
     'use strict';
     initTimer();
+    startbackgroundloop(30000);
     checkSpotifySession();
-    setInterval(function() {
-        loadBackground();
-    }, 60000);
 });
 
 function initTimer() {
@@ -29,6 +27,12 @@ function computeUnixTime(date) {
     date.setSeconds(0);
 
     return date;
+}
+
+function startbackgroundloop(timout) {
+    setInterval(function() {
+        loadBackground();
+    }, timout);
 }
 
 function loadBackground() {
