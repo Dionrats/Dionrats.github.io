@@ -209,6 +209,7 @@ function isNotConnected() {
 }
 
 function selectPlaylist(url, name) {
-    $('dropdown-toggle').html(name);
+    console.log("Playlist: " + name + " selected!");
+    $('#dropdownMenuLink').html(name);
     Cookies.set('SpotifyPlaylist', url);
 }
