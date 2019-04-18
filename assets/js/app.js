@@ -1,8 +1,10 @@
 $('document').ready(function() {
     'use strict';
     initTimer();
-    startbackgroundloop(30000);
     checkSpotifySession();
+    
+    startbackgroundloop(30000);
+    startSpotifySessionloop(3000000);
 });
 
 function initTimer() {
@@ -42,6 +44,12 @@ function loadBackground() {
     $.get("https://api.giphy.com/v1/gifs/search?api_key=GgBhSVxyJ0mbSMx6CZL9QHraulmyV6jU&q=cheers&limit=1&offset=" + offSet + "&rating=G&lang=nl", function(res) {
         $("#html").css("background-image", "url(" + res.data[0].images.original.url + ")");
     });
+}
+
+function startSpotifySessionloop(timout) {
+    setInterval(function() {
+        checkSpotifySession();
+    }, timout);
 }
 
 function checkSpotifySession() {
