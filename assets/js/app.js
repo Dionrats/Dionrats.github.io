@@ -57,7 +57,7 @@ function checkSpotifySession() {
             //display connect option
 
     //get session cookie
-    let spotifySession = Cookies.get('spotifySession');
+    let spotifySession = Cookies.getJSON('spotifySession');
     
     //check if a user is logged in
     if(spotifySession == undefined)
@@ -66,13 +66,10 @@ function checkSpotifySession() {
     //check if accesstoken is valid
     if(new Date().getTime() >= spotifySession.expires_at){
         console.log("Expired Cookie found");
+        refreshSpotifyTokens(spotifySession);
         return; //get new access_token
     }
-        
-    
     console.log("Valid Cookie found!")
-    
-
 }
 
 function playMusic() {
@@ -124,4 +121,37 @@ function authenticateSpotify() {
 
     //redirect to url
     window.location.replace(url);
+}
+
+function refreshSpotifyTokens(context) {
+    $.ajax({
+        type: "POST",
+        url: "https://accounts.spotify.com/api/token",
+        data: {
+            grant_type: "refresh_token",
+            refresh_token: context.refresh_token,
+        },
+        success: function(data){
+            console.log("Updated Spotify Token");
+            //write cookie
+            writeCookies(data);
+        },
+        dataType: "json",
+        headers: {
+            "Access-Control-Allow-Headers": "*",
+            Authorization: "Basic ZDZhNWE5N2YwNzM4NDY0MWFmMDU5OWQzNzJkMDVkNWE6MTQwNzBhOTA4M2YzNGRlZGI5ZjU5MzU5ZTE1ZTg0NjQ="
+        }
+    });
+}
+
+function writeCookies(context) {
+    console.log("writing cookie");
+    Cookies.set('spotifySession', {
+        access_token: context.access_token, 
+        refresh_token: Cookies.getJSON('spotifySession').refresh_token,
+        expires_at: (new Date().getTime() +  (context.expires_in * 1000))
+    }, {
+        expires: 1, 
+        secure: true}
+    );
 }
