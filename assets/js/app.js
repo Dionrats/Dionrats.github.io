@@ -1,8 +1,10 @@
 $('document').ready(function() {
     'use strict';
     initTimer();
+
     checkSpotifySession();
-    
+    checkConnected();
+
     startbackgroundloop(30000);
     startSpotifySessionloop(3000000);
 });
@@ -53,17 +55,6 @@ function startSpotifySessionloop(timout) {
 }
 
 function checkSpotifySession() {
-    //check sessionCookie
-        //if oke:
-            //display playlist options
-                //todo
-            //display logout option
-                //if clicked
-                    //delete sessionCookie
-                    //refresh page
-        //if not-oke:
-            //display connect option
-
     //get session cookie
     let spotifySession = Cookies.getJSON('spotifySession');
     
@@ -77,7 +68,8 @@ function checkSpotifySession() {
         refreshSpotifyTokens(spotifySession);
         return; //get new access_token
     }
-    console.log("Valid Cookie found!")
+    console.log("Valid Cookie found!");
+    //display logged in banner...
 }
 
 function playMusic() {
@@ -152,6 +144,11 @@ function refreshSpotifyTokens(context) {
     });
 }
 
+function logOut() {
+    Cookies.remove('spotifySession'); 
+    window.location.reload();
+}
+
 function writeCookies(context) {
     console.log("writing cookie");
     Cookies.set('spotifySession', {
@@ -162,4 +159,38 @@ function writeCookies(context) {
         expires: 1, 
         secure: true}
     );
+}
+
+function checkConnected() {
+    if(Cookies.get('spotifySession') == undefined){
+        isNotConnected();
+        return;
+    }
+    isConnected();
+}
+
+function isConnected() {
+    $(".connect").addClass("hidden");
+    $(".connected").removeClass("hidden");
+
+    let cookie = Cookies.getJSON('spotifySession');
+    
+    $.ajax({
+        type: "GET",
+        url: "https://accounts.spotify.com/api/me",
+        success: function(data){
+            console.log("Got account metadata");
+            $('.img-circle').attr("src", data.images.url);
+            $(".name").html(data.display_name);
+        },
+        headers: {
+            "Access-Control-Allow-Headers": "*",
+            Authorization: "Bearer " + cookie.access_token
+        }
+    });
+}
+
+function isNotConnected() {
+    $(".connected").addClass("hidden");
+    $(".connect").removeClass("hidden");
 }

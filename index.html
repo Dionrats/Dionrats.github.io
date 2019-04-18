@@ -8,7 +8,7 @@
     <!-- <link rel="stylesheet" type="text/css" href="https://dionrats.github.io/assets/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://dionrats.github.io/assets/css/demo.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/demo.css">
 
     <title>Vrijmibo!</title>
 </head>
@@ -17,8 +17,36 @@
     <div class="pos-f-t">
         <div class="collapse" id="navbarToggleExternalContent">
             <div class="bg-dark p-4">
-                <h5 class="text-white h4">Connect Spotify</h5>
-                <button type="button" class="btn btn-primary" onclick="authenticateSpotify()">Let's Go!</button>
+                <div class="connect hidden">
+                        <h5 class="text-white h4">Connect Spotify</h5>
+                        <button type="button" class="btn btn-success" onclick="authenticateSpotify()">Let's Go!</button> 
+                </div>
+                <div class="container connected">
+                    <div class="row">
+                      <div class="col-sm">
+                        <img src = "http://www.fillmurray.com/140/140" class = "img-circle">
+                        <h5 class="text-white h4 name">Dion Rats</h5>
+                      </div>
+                      <div class="col-sm">
+
+                        <div class="dropdown">
+                            <p class="font-weight-bold text-white">Kies je borrelmuziek</p>
+                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Dropdown link
+                            </a>
+                          
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                          </div>
+                      </div>
+                      <div class="col-sm">
+                        <button type="button" class="btn btn-danger float-right" onclick="logOut()">Logout</button>
+                      </div>
+                    </div>
+                </div>
             </div>
         </div>
         <nav class="navbar navbar-dark bg-transparent">
@@ -119,7 +147,7 @@
         crossorigin="anonymous"></script>
     <script src="https://dionrats.github.io/assets/js/js-cookie.js"></script>
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    <script type="text/javascript" src="https://dionrats.github.io/assets/js/app.js"></script>
+    <script type="text/javascript" src="assets/js/app.js"></script>
 
 </body>
 
