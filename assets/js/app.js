@@ -176,18 +176,17 @@ function isConnected() {
     let cookie = Cookies.getJSON('spotifySession');
     
     $.ajax({
-        type: "GET",
-        crossDomain: true,
-        url: "https://accounts.spotify.com/api/me",
+        url: 'https://api.spotify.com/v1/me',
+        headers: {
+            'Authorization': 'Bearer ' + cookie.access_token
+        },
         success: function(data){
             console.log("Got account metadata");
             $('.img-circle').attr("src", data.images.url);
             $(".name").html(data.display_name);
-        },
-        headers: {
-            Authorization: "Bearer " + cookie.access_token
         }
     });
+     
 }
 
 function isNotConnected() {
