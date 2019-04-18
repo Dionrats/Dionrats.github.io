@@ -182,8 +182,7 @@ function isConnected() {
         },
         success: function(data){
             console.log("Got account metadata");
-            console.log(data);
-            $('.img-circle').attr("src", data.images.url);
+            $('.img-circle').attr("src", data.images[0].url);
             $(".name").html(data.display_name);
         }
     });
