@@ -241,6 +241,9 @@ function playPlaylist(uri) {
         },
         success: function(data){
             console.log("Let the borrel commence...");
+        },
+        beforeSend: function(jqXHR) {
+            console.log(jqXHR);
         }
     });
     
