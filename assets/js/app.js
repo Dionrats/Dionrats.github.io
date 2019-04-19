@@ -217,11 +217,11 @@ async function createPlayer(context) {
         // Not Ready
         player.addListener('not_ready', ({ device_id }) => {
             console.log('Device ID has gone offline: ', device_id);
-            reject();
         });
         
         // Connect to the player!
         player.connect();
+        resolve();
     });
 }
 
@@ -238,7 +238,7 @@ async function playPlaylist(uri) {
             'Authorization': 'Bearer ' + cookie.access_token
         },
         data: JSON.stringify({
-            context_uri: "spotify:playlist:37i9dQZF1DX7CfwQr5vk7g",
+            context_uri: uri,
             offset: {
                 position: 1
             },
