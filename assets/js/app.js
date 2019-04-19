@@ -21,8 +21,7 @@ function initTimer() {
     }, function() {
         // Finish Callback
         console.log("Time is up!");
-        let playCookie = Cookies.get('SpotifyPlaylist');
-        playPlaylist(playCookie);
+        playPlaylist(Cookies.get('SpotifyPlaylist'));
     });
 }
 
