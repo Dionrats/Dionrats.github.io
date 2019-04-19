@@ -229,6 +229,7 @@ function playPlaylist(uri) {
     return $.ajax({
         type: "PUT",
         url: 'https://api.spotify.com/v1/me/player/play?device_id=' + deviceid,
+        dataType: "json",
         headers: {
             'Authorization': 'Bearer ' + cookie.access_token
         },
@@ -241,9 +242,6 @@ function playPlaylist(uri) {
         },
         success: function(data){
             console.log("Let the borrel commence...");
-        },
-        beforeSend: function(jqXHR) {
-            console.log(jqXHR);
         }
     });
     
