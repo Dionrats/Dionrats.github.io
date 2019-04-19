@@ -177,6 +177,8 @@ function isConnected() {
             }
         }
     });
+
+    createPlayer(cookie);
      
 }
 
@@ -226,24 +228,22 @@ function createPlayer(context) {
 
 async function playPlaylist(uri) {
     let cookie = Cookies.getJSON('spotifySession');
-    createPlayer(cookie).then(player => {
-        $.ajax({
-            type: "PUT",
-            url: 'https://api.spotify.com/v1/me/player/play?device_id=' + deviceid,
-            dataType: "json",
-            headers: {
-                'Authorization': 'Bearer ' + cookie.access_token
+    $.ajax({
+        type: "PUT",
+        url: 'https://api.spotify.com/v1/me/player/play?device_id=' + deviceid,
+        dataType: "json",
+        headers: {
+            'Authorization': 'Bearer ' + cookie.access_token
+        },
+        data: JSON.stringify({
+            context_uri: uri,
+            offset: {
+                position: 1
             },
-            data: JSON.stringify({
-                context_uri: uri,
-                offset: {
-                    position: 1
-                },
-                position_ms: 0
-            }),
-            success: function(data){
-                console.log("Let the borrel commence...");
-            }
-        }); 
-    });
+            position_ms: 0
+        }),
+        success: function(data){
+            console.log("Let the borrel commence...");
+        }
+    }); 
 }
