@@ -191,7 +191,7 @@ function selectPlaylist(url, name) {
     Cookies.set('SpotifyPlaylist', url);
 }
 
-async function createPlayer(context) {
+function createPlayer(context) {
     let promise = new Promise((resolve, reject) => {
         const player = new Spotify.Player({
             name: 'Vrijmibo',
@@ -220,7 +220,7 @@ async function createPlayer(context) {
         
         // Connect to the player!
         player.connect();
-        resolve("Player ready");
+        resolve(player);
     });
 }
 
