@@ -191,39 +191,43 @@ function selectPlaylist(url, name) {
     Cookies.set('SpotifyPlaylist', url);
 }
 
-function createPlayer(context) {
-    const player = new Spotify.Player({
-        name: 'Vrijmibo',
-        getOAuthToken: cb => { cb(context.access_token); }
+async function createPlayer(context) {
+    let promise = new Promise((resolve, reject) => {
+        const player = new Spotify.Player({
+            name: 'Vrijmibo',
+            getOAuthToken: cb => { cb(context.access_token); }
+        });
+        
+        // Error handling
+        player.addListener('initialization_error', ({ message }) => { console.error(message); });
+        player.addListener('authentication_error', ({ message }) => { console.error(message); });
+        player.addListener('account_error', ({ message }) => { console.error(message); });
+        player.addListener('playback_error', ({ message }) => { console.error(message); });
+        
+        // Playback status updates
+        player.addListener('player_state_changed', state => { console.log(state); });
+        
+        // Ready
+        player.addListener('ready', ({ device_id }) => {
+            deviceid = device_id;
+            console.log('Ready with Device ID: ', device_id);
+            resolve();
+        });
+        
+        // Not Ready
+        player.addListener('not_ready', ({ device_id }) => {
+            console.log('Device ID has gone offline: ', device_id);
+            reject();
+        });
+        
+        // Connect to the player!
+        player.connect();
     });
-      
-    // Error handling
-    player.addListener('initialization_error', ({ message }) => { console.error(message); });
-    player.addListener('authentication_error', ({ message }) => { console.error(message); });
-    player.addListener('account_error', ({ message }) => { console.error(message); });
-    player.addListener('playback_error', ({ message }) => { console.error(message); });
-      
-    // Playback status updates
-    player.addListener('player_state_changed', state => { console.log(state); });
-      
-    // Ready
-    player.addListener('ready', ({ device_id }) => {
-        deviceid = device_id;
-        console.log('Ready with Device ID: ', device_id);
-    });
-      
-    // Not Ready
-    player.addListener('not_ready', ({ device_id }) => {
-        console.log('Device ID has gone offline: ', device_id);
-    });
-      
-    // Connect to the player!
-    player.connect();
 }
 
-function playPlaylist(uri) {
+async function playPlaylist(uri) {
     let cookie = Cookies.getJSON('spotifySession');
-    createPlayer(cookie);
+    await createPlayer(cookie);
     
 
     return $.ajax({
