@@ -26,6 +26,7 @@ function initTimer() {
 
 function initSpotify() {
     window.onSpotifyWebPlaybackSDKReady = () => {
+        createPlayer(cookie);
         console.log("Spotify initialized");
     }
 }
@@ -176,10 +177,7 @@ function isConnected() {
                 $('.dropdown-menu').append('<a class="dropdown-item" onclick="selectPlaylist(\'' + data.items[i].uri + '\', \'' + data.items[i].name + '\')">' + data.items[i].name + '</a>');
             }
         }
-    });
-
-    createPlayer(cookie);
-     
+    });     
 }
 
 function isNotConnected() {
