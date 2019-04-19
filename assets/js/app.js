@@ -220,7 +220,7 @@ async function createPlayer(context) {
         
         // Connect to the player!
         player.connect();
-        resolve();
+        resolve("Player ready");
     });
 }
 
