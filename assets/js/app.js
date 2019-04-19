@@ -233,7 +233,11 @@ function playPlaylist(uri) {
             'Authorization': 'Bearer ' + cookie.access_token
         },
         data: {
-            "context_uri": uri,
+            context_uri: "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+            offset: {
+                position: 0
+            },
+            position_ms: 0
         },
         success: function(data){
             console.log("Let the borrel commence...");
