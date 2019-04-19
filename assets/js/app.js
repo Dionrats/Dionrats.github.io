@@ -192,7 +192,7 @@ function selectPlaylist(url, name) {
 }
 
 function createPlayer(context) {
-    let promise = new Promise((resolve, reject) => {
+    return promise = new Promise((resolve, reject) => {
         const player = new Spotify.Player({
             name: 'Vrijmibo',
             getOAuthToken: cb => { cb(context.access_token); }
@@ -226,7 +226,7 @@ function createPlayer(context) {
 
 async function playPlaylist(uri) {
     let cookie = Cookies.getJSON('spotifySession');
-    await createPlayer(cookie);
+    let player = await createPlayer(cookie);
     
 
     return $.ajax({
