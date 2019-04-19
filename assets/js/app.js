@@ -233,13 +233,13 @@ function playPlaylist(uri) {
         headers: {
             'Authorization': 'Bearer ' + cookie.access_token
         },
-        data: {
-            "context_uri": "spotify:playlist:37i9dQZF1DX7CfwQr5vk7g",
-            "offset": {
-                "position": 1
+        data: JSON.stringify({
+            context_uri: "spotify:playlist:37i9dQZF1DX7CfwQr5vk7g",
+            offset: {
+                position: 1
             },
-            "position_ms": 0
-        },
+            position_ms: 0
+        }),
         success: function(data){
             console.log("Let the borrel commence...");
         }
