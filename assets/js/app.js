@@ -211,7 +211,6 @@ async function createPlayer(context) {
         player.addListener('ready', ({ device_id }) => {
             deviceid = device_id;
             console.log('Ready with Device ID: ', device_id);
-            resolve();
         });
         
         // Not Ready
