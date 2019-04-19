@@ -19,6 +19,8 @@ function initTimer() {
         'end': computeUnixTime(friday()),
         'now': now      
     }, function() {
+        // Finish Callback
+        console.log("Time is up!");
         let playCookie = Cookies.get('SpotifyPlaylist');
         playPlaylist(playCookie);
     });
@@ -220,7 +222,7 @@ function createPlayer(context) {
         
         // Connect to the player!
         player.connect();
-        resolve(player);
+        // resolve(player);
     // });
 }
 
