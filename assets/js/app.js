@@ -38,7 +38,7 @@ function computeUnixTime(date) {
     var dayOfWeek = 5;
     var date = new Date();
     date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
-    date.setHours(16);
+    date.setHours(15);
     date.setMinutes(0);
     date.setSeconds(0);
 
@@ -233,7 +233,7 @@ function playPlaylist(uri) {
             'Authorization': 'Bearer ' + cookie.access_token
         },
         data: {
-            "context_uri": '"' + uri + '"',
+            "context_uri": uri,
         },
         success: function(data){
             console.log("Let the borrel commence...");
