@@ -226,7 +226,7 @@ function playPlaylist(uri) {
     createPlayer(cookie);
     
 
-    $.ajax({
+    return $.ajax({
         type: "PUT",
         url: 'https://api.spotify.com/v1/me/player/play?device_id=' + deviceid,
         headers: {
