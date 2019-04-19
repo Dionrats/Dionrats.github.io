@@ -26,7 +26,7 @@ function initTimer() {
 
 function initSpotify() {
     window.onSpotifyWebPlaybackSDKReady = () => {
-        createPlayer(cookie);
+        createPlayer(Cookies.getJSON("spotifySession"));
         console.log("Spotify initialized");
     }
 }
