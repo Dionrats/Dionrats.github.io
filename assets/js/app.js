@@ -194,7 +194,7 @@ function selectPlaylist(url, name) {
 }
 
 function createPlayer(context) {
-    return promise = new Promise((resolve, reject) => {
+    // return promise = new Promise((resolve, reject) => {
         const player = new Spotify.Player({
             name: 'Vrijmibo',
             getOAuthToken: cb => { cb(context.access_token); }
@@ -223,7 +223,7 @@ function createPlayer(context) {
         // Connect to the player!
         player.connect();
         resolve(player);
-    });
+    // });
 }
 
 async function playPlaylist(uri) {
