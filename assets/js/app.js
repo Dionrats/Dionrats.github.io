@@ -233,7 +233,7 @@ function playPlaylist(uri) {
             'Authorization': 'Bearer ' + cookie.access_token
         },
         data: {
-            context_uri: uri,
+            "context_uri": uri,
         },
         success: function(data){
             console.log("Let the borrel commence...");
