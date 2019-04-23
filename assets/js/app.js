@@ -40,7 +40,7 @@ function computeUnixTime(date) {
     var dayOfWeek = 5;
     var date = new Date();
     date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
-    date.setHours(15);
+    date.setHours(16);
     date.setMinutes(0);
     date.setSeconds(0);
 
