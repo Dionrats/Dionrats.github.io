@@ -2,8 +2,9 @@ let deviceid;
 
 $('document').ready(function() {
     'use strict';
-    initSpotify();
     initTimer();
+    initSpotify();
+    
 
     checkSpotifySession();
     checkConnected();
