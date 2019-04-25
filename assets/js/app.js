@@ -1,7 +1,7 @@
 let deviceid;
 
 $('document').ready(function() {
-    'use strict';
+    'use strict'
     initTimer();
     initSpotify();
     
