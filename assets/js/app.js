@@ -1,4 +1,4 @@
-let deviceid;
+var deviceid;
 
 $('document').ready(function() {
     'use strict'
@@ -14,7 +14,7 @@ $('document').ready(function() {
 });
 
 function initTimer() {
-    let now = computeUnixTime(new Date());
+    var now = computeUnixTime(new Date());
     $('.countdown').final_countdown({
         'start': now,
         'end': computeUnixTime(friday()),
