@@ -221,7 +221,7 @@ function createPlayer(context) {
     // return promise = new Promise((resolve, reject) => {
         const player = new Spotify.Player({
             name: 'Vrijmibo',
-            getOAuthToken: cb => { cb(context.access_token); }
+            getOAuthToken: (cb, context) => { cb(context.access_token); }
         });
         
         // Error handling
