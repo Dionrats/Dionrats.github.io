@@ -4,14 +4,14 @@ $('document').ready(function() {
     // 'use strict'
     //clearListCookies();
     initTimer();
-    // initSpotify();
+    initSpotify();
     
 
-    // checkSpotifySession();
-    // checkConnected();
+    checkSpotifySession();
+    checkConnected();
 
-    // startbackgroundloop(30000);
-    // startSpotifySessionloop(3000000);
+    startbackgroundloop(30000);
+    startSpotifySessionloop(3000000);
 });
 
 function clearListCookies()
