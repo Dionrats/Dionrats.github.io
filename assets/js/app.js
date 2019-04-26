@@ -2,7 +2,7 @@ var deviceid;
 
 $('document').ready(function() {
     // 'use strict'
-    clearListCookies();
+    //clearListCookies();
     initTimer();
     // initSpotify();
     
