@@ -19,11 +19,13 @@ function initTimer() {
         'start': now,
         'end': computeUnixTime(friday()),
         'now': now      
-    }, function() {
-        // Finish Callback
-        console.log("Time is up!");
-        playPlaylist(Cookies.get('SpotifyPlaylist'));
-    });
+    }
+    // , function() {
+    //     // Finish Callback
+    //     console.log("Time is up!");
+    //     playPlaylist(Cookies.get('SpotifyPlaylist'));
+    // }
+);
 }
 
 function initSpotify() {
