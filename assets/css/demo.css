@@ -88,6 +88,14 @@ body {
 	display: none;
 }
 
+.off{
+	background: #da4f49;
+}
+
+.toggle-off{
+	color: white !important;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
 	.clock-item {
 		margin-bottom: 30px;		
@@ -98,4 +106,13 @@ body {
 	.clock-item {
 		margin: 0px 30px 30px 30px;
 	}
+}
+
+
+.col-2{
+	display: inline-block;
+}
+
+.toggle, .toggle-on, .toggle-off{
+	cursor: pointer;
 }
