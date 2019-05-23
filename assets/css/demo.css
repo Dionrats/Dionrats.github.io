@@ -88,6 +88,14 @@ body {
 	display: none;
 }
 
+.off{
+	background: #da4f49;
+}
+
+.toggle-off{
+	color: white !important;
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
 	.clock-item {
 		margin-bottom: 30px;		

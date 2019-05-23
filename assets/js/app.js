@@ -7,15 +7,40 @@ var deviceid;
 // });
 
 function init() {
+    initPartyToggle();
+    initToggleEvent();
     initTimer();
     initSpotify();
     
+    $('.toggle').click(function(){
+    	location.reload();
+    })
 
     checkSpotifySession();
     checkConnected();
 
     startbackgroundloop(30000);
     startSpotifySessionloop(3000000);
+}
+
+function initPartyToggle(){
+	$('party-toggle').bootstrapToggle('disable')
+	if(Cookies.get('time-type') == "party"){
+		$('#party-toggle').bootstrapToggle('on')
+	} else {
+		$('#party-toggle').bootstrapToggle('off')
+	}
+	$('party-toggle').bootstrapToggle('enable')
+}
+
+function initToggleEvent(){
+    $('#party-toggle').change(function() {
+    	if(Cookies.get('time-type') == "party"){
+    		Cookies.set('time-type', 'normal');
+    	} else {
+    		Cookies.set('time-type', 'party');
+    	}
+    })
 }
 
 function clearListCookies()
@@ -40,18 +65,43 @@ function clearListCookies()
 }
 
 function initTimer() {
+	if(Cookies.get('time-type') == "party"){
+		var titleText = getTitleText(getCurrentDay()) 
+		$("#title").html(titleText);
+	}
     var now = computeUnixTime(new Date());
     $('.countdown').final_countdown({
-        'start': now,
-        'end': computeUnixTime(friday()),
-        'now': now      
-    }
-    // , function() {
-    //     // Finish Callback
-    //     console.log("Time is up!");
-    //     playPlaylist(Cookies.get('SpotifyPlaylist'));
-    // }
-);
+	        'start': now,
+	        'end': computeUnixTime(friday()),
+	        'now': now      
+	    }
+	    
+	    // , function() {
+	    //     // Finish Callback
+	    //     console.log("Time is up!");
+	    //     playPlaylist(Cookies.get('SpotifyPlaylist'));
+	    // }
+	);
+    console.log($('.countdown'))
+}
+
+function getTitleText(day){
+	switch(day){
+		case 1:
+			return "MAMIBO"
+		case 2:
+			return "DIMIBO"
+		case 3:
+			return "WOMIBO"
+		case 4:
+			return "DOMIBO"
+		case 5:
+			return "VRIJMIBO"
+		case 6:
+			return "ZAMIBO"
+		case 7:
+			return "ZOMIBO"
+	}
 }
 
 function initSpotify() {
@@ -66,7 +116,11 @@ function computeUnixTime(date) {
 }
 
  function friday() {
-    var dayOfWeek = 5;
+ 	if(Cookies.get('time-type') == "party"){
+    	var dayOfWeek = getCurrentDay();
+	}else{
+		var dayOfWeek = 5;
+	}
     var date = new Date();
     date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
     date.setHours(16);
@@ -219,6 +273,11 @@ function selectPlaylist(url, name) {
     console.log("Playlist: " + name + " selected!");
     $('#dropdownMenuLink').html(name);
     Cookies.set('SpotifyPlaylist', url);
+}
+
+function getCurrentDay(){
+	var d = new Date();
+	return d.getDay();
 }
 
 function createPlayer(context) {
