@@ -7,7 +7,7 @@ var deviceid;
 // });
 
 function init() {
-    alert("document ready");
+    document.getElementById("title").html("HAMERTIME");
     initTimer();
     initSpotify();
     
