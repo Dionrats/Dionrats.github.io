@@ -113,6 +113,6 @@ body {
 	display: inline-block;
 }
 
-.toggle, .toggle-on, toggle-off{
+.toggle, .toggle-on, .toggle-off{
 	cursor: pointer;
 }
