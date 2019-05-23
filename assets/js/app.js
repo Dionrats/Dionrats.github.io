@@ -1,8 +1,12 @@
 var deviceid;
 
-$('document').ready(function() {
-    // 'use strict'
-    //clearListCookies();
+// $('document').ready(function() {
+//     // 'use strict'
+//     //clearListCookies();
+   
+// });
+
+function init() {
     alert("document ready");
     initTimer();
     initSpotify();
@@ -13,7 +17,7 @@ $('document').ready(function() {
 
     startbackgroundloop(30000);
     startSpotifySessionloop(3000000);
-});
+}
 
 function clearListCookies()
 {   
@@ -37,7 +41,6 @@ function clearListCookies()
 }
 
 function initTimer() {
-    alert("init timer");
     var now = computeUnixTime(new Date());
     $('.countdown').final_countdown({
         'start': now,
