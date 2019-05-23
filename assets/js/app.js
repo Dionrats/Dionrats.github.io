@@ -3,6 +3,7 @@ var deviceid;
 $('document').ready(function() {
     // 'use strict'
     //clearListCookies();
+    alert("document ready");
     initTimer();
     initSpotify();
     
@@ -36,6 +37,7 @@ function clearListCookies()
 }
 
 function initTimer() {
+    alert("init timer");
     var now = computeUnixTime(new Date());
     $('.countdown').final_countdown({
         'start': now,
