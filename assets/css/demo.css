@@ -107,3 +107,12 @@ body {
 		margin: 0px 30px 30px 30px;
 	}
 }
+
+
+.col-2{
+	display: inline-block;
+}
+
+.toggle{
+	cursor: pointer;
+}
