@@ -313,7 +313,7 @@ function createPlayer(context) {
     // });
 }
 
-async function playPlaylist(uri) {
+function playPlaylist(uri) {
     let cookie = Cookies.getJSON('spotifySession');
     $.ajax({
         type: "PUT",
