@@ -76,11 +76,13 @@ function initTimer() {
 	        'now': now      
 	    }
 	    
-	    // , function() {
-	    //     // Finish Callback
-	    //     console.log("Time is up!");
-	    //     playPlaylist(Cookies.get('SpotifyPlaylist'));
-	    // }
+	    , function() {
+	        // Finish Callback
+	        console.log("Time is up!");
+           // playPlaylist(Cookies.get('SpotifyPlaylist'));
+           var x = document.getElementById("timeeffect");
+           x.play();
+	    }
 	);
     console.log($('.countdown'))
 }
