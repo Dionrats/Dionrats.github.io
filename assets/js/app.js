@@ -125,8 +125,8 @@ function computeUnixTime(date) {
 	}
     var date = new Date();
     date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
-    date.setHours(15);
-    date.setMinutes(30);
+    date.setHours(16);
+    date.setMinutes(0);
     date.setSeconds(0);
 
     return date;
