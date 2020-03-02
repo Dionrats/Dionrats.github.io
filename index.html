@@ -1,159 +1,19 @@
 <!doctype html>
-<html id="html">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
+  <title>Vrijmibo</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway|Dancing+Script|Pacifico&effect=anaglyph" rel="stylesheet" type="text/css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Dancing+Script|Pacifico&effect=anaglyph" rel="stylesheet" type="text/css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://dionrats.github.io/assets/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://dionrats.github.io/assets/css/demo.css">
-
-    <title>Vrijmibo!</title>
-</head>
-
-<body onload="init()">
-    <audio id="timeeffect">
-        <source src="https://dionrats.github.io/assets/sound/Air-Horn-Sound-Effect.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>      
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-            <div class="bg-dark p-4">
-                <div class="connect hidden col-2">
-                    <h5 class="text-white h4">Connect Spotify</h5>
-                    <button type="button" class="btn btn-success" onclick="authenticateSpotify()">Let's Go!</button> 
-                </div>
-                <div class="col-2">
-                    <h5 class="text-white h4">Party Time!</h5>
-                    <input id="party-toggle" type="checkbox" checked data-toggle="toggle">
-                </div>
-                <div class="container connected">
-                    <div class="row">
-                      <div class="col-sm">
-                        <img src = "" class = "img-circle">
-                        <h5 class="text-white h4 name"></h5>
-                      </div>
-                      <div class="col-sm">
-
-                        <div class="dropdown">
-                            <p class="font-weight-bold text-white">Kies je borrelmuziek</p>
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Afspeellijsten
-                            </a>
-                          
-                            <div class="dropdown-menu" aria-labelledby="Afspeellijst">
-                            </div>
-                          </div>
-                      </div>
-                      <div class="col-sm">
-                        <button type="button" class="btn btn-danger float-right" onclick="logOut()">Logout</button>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar navbar-dark bg-transparent">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </nav>
-    </div>
-
-    <div class="countdown countdown-container container">
-        <div class="row title">
-            <span>Het is</span>
-            <h1 id="title" class="font-effect-anaglyph">VRIJMIBO</h1>
-            <span>over:</span>
-        </div>
-        <div class="clock row">
-            <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
-                <div class="wrap">
-                    <div class="inner">
-                        <div id="canvas-days" class="clock-canvas"></div>
-
-                        <div class="text">
-                            <p class="val">0</p>
-                            <p class="type-days type-time">DAGEN</p>
-                        </div>
-                        <!-- /.text -->
-                    </div>
-                    <!-- /.inner -->
-                </div>
-                <!-- /.wrap -->
-            </div>
-            <!-- /.clock-item -->
-
-            <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
-                <div class="wrap">
-                    <div class="inner">
-                        <div id="canvas-hours" class="clock-canvas"></div>
-
-                        <div class="text">
-                            <p class="val">0</p>
-                            <p class="type-hours type-time">UREN</p>
-                        </div>
-                        <!-- /.text -->
-                    </div>
-                    <!-- /.inner -->
-                </div>
-                <!-- /.wrap -->
-            </div>
-            <!-- /.clock-item -->
-
-            <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
-                <div class="wrap">
-                    <div class="inner">
-                        <div id="canvas-minutes" class="clock-canvas"></div>
-
-                        <div class="text">
-                            <p class="val">0</p>
-                            <p class="type-minutes type-time">MINUTEN</p>
-                        </div>
-                        <!-- /.text -->
-                    </div>
-                    <!-- /.inner -->
-                </div>
-                <!-- /.wrap -->
-            </div>
-            <!-- /.clock-item -->
-
-            <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
-                <div class="wrap">
-                    <div class="inner">
-                        <div id="canvas-seconds" class="clock-canvas"></div>
-
-                        <div class="text">
-                            <p class="val">0</p>
-                            <p class="type-seconds type-time">SECONDEN</p>
-                        </div>
-                        <!-- /.text -->
-                    </div>
-                    <!-- /.inner -->
-                </div>
-                <!-- /.wrap -->
-            </div>
-            <!-- /.clock-item -->
-        </div>
-        <!-- /.clock -->
-    </div>
-    <!-- /.countdown-wrapper -->
-
-
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script type="text/javascript" src="https://dionrats.github.io/assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="https://dionrats.github.io/assets/js/kinetic.js"></script>
-    <script type="text/javascript" src="https://dionrats.github.io/assets/js/jquery.final-countdown.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <script type="text/javascript" src="https://dionrats.github.io/assets/js/js-cookie.js"></script>
-    <script type="text/javascript" src="https://sdk.scdn.co/spotify-player.js"></script>
-    <script type="text/javascript" src="https://dionrats.github.io/assets/js/app.js"></script>
-
-</body>
-
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.7df1eef8fcb29ce175bf.css"></head>
+<body>
+  <app-root></app-root>
+<script src="runtime-es2015.0811dcefd377500b5b1a.js" type="module"></script><script src="runtime-es5.0811dcefd377500b5b1a.js" nomodule defer></script><script src="polyfills-es5.abdd41dcd206a6689f72.js" nomodule defer></script><script src="polyfills-es2015.442fa3cc45520cc0d518.js" type="module"></script><script src="main-es2015.051993311af98951c245.js" type="module"></script><script src="main-es5.051993311af98951c245.js" nomodule defer></script></body>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>
