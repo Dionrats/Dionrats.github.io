@@ -574,7 +574,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           target: {
             weekday: 5,
             hour: 16,
-            minute: 0,
+            minute: 30,
             second: 0
           },
           active: true
@@ -867,7 +867,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           target: {
             weekday: 5,
             hour: 16,
-            minute: 0,
+            minute: 30,
             second: 0
           },
           active: true
@@ -876,7 +876,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           target: {
             weekday: this.dayService.getCurrentDayIndex(),
             hour: 16,
-            minute: 0,
+            minute: 30,
             second: 0
           },
           active: false

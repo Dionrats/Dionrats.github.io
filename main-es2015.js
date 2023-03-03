@@ -293,7 +293,7 @@ class ClockComponent {
     constructor(heartbeatService, optionsService) {
         this.heartbeatService = heartbeatService;
         this.optionsService = optionsService;
-        this.clock = { name: 'Vrijmibo', target: { weekday: 5, hour: 16, minute: 0, second: 0 }, active: true };
+        this.clock = { name: 'Vrijmibo', target: { weekday: 5, hour: 16, minute: 30, second: 0 }, active: true };
         this.timers = [
             { title: 'dagen', max: 7, color: '#d86b6b', heartbeat: this.heartbeatService.dayHeartbeat },
             { title: 'uren', max: 24, color: '#ecefcb', heartbeat: this.heartbeatService.hourHeartbeat },
@@ -423,8 +423,8 @@ class MenuComponent {
         this.dayService = dayService;
         this.optionsService = optionsService;
         this.clocks = [
-            { name: 'Vrijmibo', target: { weekday: 5, hour: 16, minute: 0, second: 0 }, active: true },
-            { name: 'Partytime', target: { weekday: this.dayService.getCurrentDayIndex(), hour: 16, minute: 0, second: 0 }, active: false },
+            { name: 'Vrijmibo', target: { weekday: 5, hour: 16, minute: 30, second: 0 }, active: true },
+            { name: 'Partytime', target: { weekday: this.dayService.getCurrentDayIndex(), hour: 16, minute: 30, second: 0 }, active: false },
         ];
     }
     ngOnInit() {
